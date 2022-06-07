@@ -1,0 +1,67 @@
+{% extends "inventario/comun/base.html" %}
+
+{% block content %}
+<script>
+let numeroAdministradores = '{{ administradores }}'
+let numeroUsuarios = '{{ usuarios }}'
+
+</script>
+                <article class="content dashboard-page">
+                    <section class="section">
+                        <div class="row sameheight-container">
+                            <!-- MENSAJES DE ERROR O EXITO -->
+{% if messages %}
+    {% for message in messages %}
+        {% if message.level == 40 %}
+
+         <div class="col-xl-12">
+         <div class="card card-warning">
+            <div class="card-header"> 
+                <div class="header-block">
+                    <em class="fa fa-warning"></em>
+                    <p class="title">{{ message }}</p>
+                    </div>
+                </div>
+         </div>
+     </div>
+
+        {% else %}      
+
+         <div class="col-xl-12">
+         <div class="card card-primary">
+            <div class="card-header"> 
+                <div class="header-block">
+                    <em class="fa fa-check"></em>
+                    <p class="title">{{ message }}</p>
+                    </div>
+                </div>
+         </div> 
+         </div>             
+
+         {% endif %}
+    {%endfor%}
+{%endif%}
+<!-- FIN DE MENSAJES DE ERROR O EXITO  -->
+
+
+            
+                <section class="section">
+                        <div class="row sameheight-container">
+                        
+                            <div class="col-xl-12">
+                                <div class="card sameheight-item sales-breakdown" data-exclude="xs,sm,lg">
+                                    <div class="card-header">
+                                        <div class="header-block">
+                                            <h3 class="title">Division de usuarios</h3>
+                                        </div>
+                                    </div>
+                                    <div class="card-block">
+                                        <div class="dashboard-sales-breakdown-chart" id="dashboard-sales-breakdown-chart"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                </article>
+                {% endblock %}
